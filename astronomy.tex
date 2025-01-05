@@ -1,0 +1,144 @@
+\documentclass[12pt,a4paper]{book}
+
+% 导入必要的包
+\usepackage[utf8]{inputenc} % 设置UTF-8编码
+\usepackage[english]{babel} % 语言设置
+\usepackage{amsmath,amssymb,amsfonts} % 数学支持
+\usepackage{graphicx} % 插入图片
+\usepackage{hyperref} % 超链接
+\usepackage{geometry} % 页面布局
+\usepackage{fancyhdr} % 页眉页脚
+\usepackage{titlesec} % 标题格式
+
+% 页面布局设置
+\geometry{
+	a4paper,
+	left=3cm,
+	right=3cm,
+	top=2.5cm,
+	bottom=2.5cm
+}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhead[L]{Astronomy} % 左侧页眉
+\fancyhead[R]{Turnex} % 右侧页眉
+\fancyfoot[C]{\thepage} % 页脚居中显示页码
+
+% 标题格式设置
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{Chapter \thechapter}{20pt}{\Huge}
+
+% 文档开始
+\begin{document}
+	
+	% 封面
+	\begin{titlepage}
+		\centering
+		{\Huge \textbf{Astronomy}} \\
+		[2cm] % 替换为书名
+		\vfill
+		{\large Turnex} \\
+		[1cm] % 替换为作者
+		{\large Date: \today} \\
+		[2cm] % 自动生成日期
+		\vfill
+		\includegraphics[width=0.5\textwidth]{example-image} % 替换为封面图片
+		\vfill
+	\end{titlepage}
+	
+	% 目录
+	\tableofcontents
+	\newpage
+	
+	% 第一章
+	\chapter{The Tools of Astronomy}
+	\section{The Light Spectrum}
+	\subsection{Trigonometric Parallax}
+	
+	The distance between Earth and Sun is defined as 1 AU. For this measurement, we have the geometric relation:
+	\begin{gather}
+		d = \frac{1 \, \text{AU}}{\tan(p)} \approx \frac{1 \, \text{AU}}{p}
+	\end{gather}
+	In radian form, defining a new unit of distance, \textbf{parsec} (pc), leads to:
+	\begin{equation}
+		d = \frac{1}{p''} \, \text{pc}
+	\end{equation}
+	
+	\subsection{The Magnitude Scale}
+	Hipparchus invented a numerical scale to describe how bright stars appear in the sky, called the \textbf{apparent magnitude}.
+	
+	\textbf{Radiant flux \( F \)} is the total amount of light energy of all wavelengths that crosses a unit area oriented perpendicular to the direction of light’s travel per unit time.
+	
+	The energy received depends on both intrinsic luminosity and distance:
+	\begin{equation}
+		F = \frac{L}{4 \pi r^2}
+	\end{equation}
+	
+	A difference of 5 magnitudes between the apparent magnitudes of two stars corresponds to the smaller-magnitude star being 100 times brighter than the larger-magnitude star:
+	\begin{gather}
+		\frac{F_2}{F_1} = 100^{(m_1 - m_2)/5} \\
+		m_1 - m_2 = -2.5 \log_{10}\left(\frac{F_1}{F_2}\right)
+	\end{gather}
+	Using the Sun as a reference:
+	\begin{gather}
+		100^{(m - M)/5} = \left(\frac{d}{10 \, \text{pc}}\right)^2 \\
+		d = 10^{(m - M + 5)/5} \, \text{pc}
+	\end{gather}
+	For two stars at the same distance:
+	\begin{equation}
+		M = M_{\odot} - 2.5 \log_{10}\left(\frac{L}{L_{\odot}}\right)
+	\end{equation}
+	
+	\subsection{The Wave Nature of Light}
+	\subsubsection{Poynting Vector and Radiation Pressure}
+	The Poynting vector is given by:
+	\begin{equation}
+		S = \frac{1}{\mu_0} \mathbf{E} \times \mathbf{B}
+	\end{equation}
+	For the time average:
+	\begin{equation}
+		\langle S \rangle = \frac{1}{2\mu_0} E_0 B_0
+	\end{equation}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{D:/screenshot011}
+		\caption{}
+		\label{fig:screenshot011}
+	\end{figure}
+	Radiation pressure for absorption and reflection is given by:
+	\begin{gather}
+		F_{\text{rad}} = \frac{\langle S \rangle A}{c} \cos(\theta) \tag{absorption}\\
+		F_{\text{rad}} = \frac{2\langle S \rangle A}{c} \cos^2(\theta) \tag{reflection}
+	\end{gather}
+	
+	\subsubsection{Planck's Function for the Blackbody Radiation Curve}
+	\textbf{Planck's radiation law}:
+	\begin{equation}
+		B_{\lambda}(T) = \frac{2hc^2}{\lambda^5} \frac{1}{\exp\left(\frac{hc}{\lambda kT}\right) - 1}
+	\end{equation}
+	
+	The luminosity \( L \) of a blackbody of area \( A \) and temperature \( T \):
+	\begin{equation}
+		L = A \sigma T^4
+	\end{equation}
+	For a spherical star:
+	\begin{equation}
+		L = 4\pi R^2 \sigma T_e^4
+	\end{equation}
+	The surface flux is:
+	\begin{equation}
+		F_{\text{surf}} = \sigma T_e^4
+	\end{equation}
+	
+	For monochromatic luminosity:
+	\begin{equation}
+		L_{\lambda} d\lambda = 4\pi R^2 B_{\lambda} d\lambda = \frac{8\pi^2 R^2 hc^2}{\lambda^5} \frac{d\lambda}{\exp\left(\frac{hc}{\lambda kT}\right) - 1}
+	\end{equation}
+	
+	Integrating over all wavelengths:
+	\begin{equation}
+		\int_0^\infty B_{\lambda}(T) \, d\lambda = \frac{\sigma T^4}{\pi}
+	\end{equation}
+	
+\end{document}
